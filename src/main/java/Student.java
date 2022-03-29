@@ -5,6 +5,12 @@ public class Student {
     int currentCourseNumber;
     float avgExamScore;
 
+    public Student() {
+        super();
+        System.out.println("Student. Конструктор по умолчанию");
+        toString();
+    }
+
     // Конструктор с четырьмя аргументами
     public Student(String fullName, String universityId, int currentCourseNumber, float avgExamScore) {
         this.fullName = fullName;

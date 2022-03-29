@@ -1,5 +1,4 @@
 public enum StudyProfile {
-
     MEDICINE ("Медицина"),
     CHEMIE ("Химия"),
     BIOLOGIE ("Биология"),

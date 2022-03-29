@@ -6,6 +6,12 @@ public class University {
     int yearOfFoundation;
     StudyProfile mainProfile;
 
+    public University() {
+        super();
+        System.out.println("University. Конструктор по умолчанию");
+        toString();
+    }
+
     // Конструктор с пятью аргументами
     public University(String id, String fullName, String shortName, int yearOfFoundation, StudyProfile mainProfile) {
         this.id = id;
