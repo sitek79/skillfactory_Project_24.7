@@ -41,5 +41,6 @@ public class Application {
         for(University university : univerRecords) {
             System.out.println(university);
         }
+        ReadXLSXFile.readXLSFFile();
     }
 }
