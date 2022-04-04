@@ -16,11 +16,12 @@ import java.util.*;
 
 public class ReadXLSXFile {
     private static final String fileLocation = "src/main/resources/universityInfo.xlsx";
+
     private ReadXLSXFile() {
     }
 
-    public static void readXLSFFile() {
-
+    public static void readXLSFFile(String listId) {
+        String list = listId;
         //XSSFWorkbook xssfWorkbook = new XSSFWorkbook();
         try(FileInputStream file = new FileInputStream(new File(fileLocation)))
         {
@@ -28,17 +29,15 @@ public class ReadXLSXFile {
             //
             XSSFWorkbook workbook = new XSSFWorkbook(file);
             //XSSFSheet datatypeSheet = workbook.getSheet("Студенты");
-            XSSFSheet datatypeSheet = workbook.getSheetAt(0);
-            // перебираем лист
-            //sh.iterator().hasNext();
+            //XSSFSheet datatypeSheet = workbook.getSheetAt(0);
+            XSSFSheet datatypeSheet = workbook.getSheet(list);
+            // перебираем лист 0
             Iterator<Row> iterator = datatypeSheet.iterator();
             while (iterator.hasNext()) {
-
                 Row currentRow = iterator.next();
                 Iterator<Cell> cellIterator = currentRow.iterator();
 
                 while (cellIterator.hasNext()) {
-
                     Cell currentCell = cellIterator.next();
                     //getCellTypeEnum shown as deprecated for version 3.15
                     //getCellTypeEnum ill be renamed to getCellType starting from version 4.0
@@ -47,10 +46,8 @@ public class ReadXLSXFile {
                     } else if (currentCell.getCellType() == CellType.NUMERIC) {
                         System.out.print(currentCell.getNumericCellValue() + "--");
                     }
-
                 }
                 System.out.println();
-
             }
             //
             /*System.out.println(sh.getLastRowNum());
