@@ -48,4 +48,6 @@ https://github.com/SkillfactoryCoding/JAVA/tree/master/UniversityInfo_Project/un
 - [ ] Взятие ячейки из строки происходит с помощью метода row.getCell() по индексу ячейки.
 - [ ] Для получения значения из ячейки существует ряд методов, позволяющий прочитать значения различных типов. Например, getNumericCellValue(), getStringCellValue().
 
+Третья часть
+--
 
