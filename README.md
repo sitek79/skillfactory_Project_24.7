@@ -23,9 +23,6 @@ https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml
 
 Вторая часть
 --
-Код первой части. (образцовый от SkillFactory)
-https://github.com/SkillfactoryCoding/JAVA/tree/master/UniversityInfo_Project/universityInfo-lesson1
-
 В этом уроке необходимо выполнить следующее:
 + [X] Скачать подготовленный файл XLSX. При желании можно продолжить заполнение файла произвольной подходящей информацией.
 + [X] Разместить этот файл в папку ресурсов проекта.
@@ -51,8 +48,9 @@ https://github.com/SkillfactoryCoding/JAVA/tree/master/UniversityInfo_Project/un
 Третья часть
 --
 #### 26.9. ПРОМЕЖУТОЧНАЯ СДАЧА ПРОЕКТА (HW-02)
-##### ветка в репозитории проекта project_26
-- [ ] Создать интерфейсы-компараторы для классов Student, University. Унаследовать их от класса Comparator<>.
+##### создана ветка в репозитории проекта с именем [project_26](https://github.com/sitek79/skillfactory_Project_24.7/tree/project_26 "git checkout project_26")
+
++ [X] Создать интерфейсы-компараторы для классов Student, University. Унаследовать их от класса Comparator<>.
 - [ ] Для каждого поля классов Student, University создать классы-компараторы, реализующие интерфейс созданных в п.1 компараторов.
 - [ ] При сравнении значений в методе compare() использовать методы соответствующих классов (Integer, Float, ...), для строковых значений использовать метод StringUtils.compare() библиотеки Apache Commons. Сравнение среднего балла студентов реализовать по убыванию.
 - [ ] Создать два enum, один — для перечисления вариантов компараторов класса Student, второй — класса University.
