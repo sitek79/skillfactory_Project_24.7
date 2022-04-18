@@ -1,47 +1,35 @@
-import java.util.ArrayList;
-import java.util.Arrays;
+import comparator.StudentComparator;
+import comparator.UniversityComparator;
+import enums.StudentComparatorType;
+import enums.UniversityComparatorType;
+import io.ReadXLSXFile;
+import model.Student;
+import model.University;
+import util.ComparatorUtil;
+
+import java.io.IOException;
+import java.util.List;
 
 public class Application {
-    public static void main(String[] args) {
-        // ---- все поля класса StudyProfile ----
-        System.out.println(Arrays.toString(StudyProfile.values()));
-        // только одно поле класса StudyProfile
-        int sundayIndex = StudyProfile.MEDICINE.ordinal();
-        System.out.println(sundayIndex);
+    public static void main(String[] args) throws IOException {
+
+        List<University> universities =
+                ReadXLSXFile.readXlsUniversities("src/main/resources/universityInfo.xlsx");
+        UniversityComparator universityComparator =
+                ComparatorUtil.getUniversityComparator(UniversityComparatorType.YEAR);
+        universities.stream()
+                .sorted(universityComparator)
+                .forEach(System.out::println);
+
+        List<Student> students =
+                ReadXLSXFile.readXlsStudents("src/main/resources/universityInfo.xlsx");
+        StudentComparator studentComparator =
+                ComparatorUtil.getStudentComparator(StudentComparatorType.AVG_EXAM_SCORE);
+        students.stream()
+                .sorted(studentComparator)
+                .forEach(System.out::println);
         //
-        StudyProfile medicine = StudyProfile.valueOf("MEDICINE");
-        System.out.println(medicine);
-        //
-        //System.out.println(Arrays.toString(new Student[]{new Student()}));
-        //
-        //System.out.println(Arrays.toString(new University[]{new University()}));
-        //
-        // Вызываем конструктор с параметрами для класса Student
-        System.out.println("конструктор с параметрами для Student");
-        Student stud = new Student("Tikhonov Andrey", "Dude", 42, 4);
-        // создаем объект ArrayList для хранения записей сотрудников
-        ArrayList<Student> studentsRecords = new ArrayList<Student>();
-        // добавляем записи сотрудников в объект AL
-        studentsRecords.add(new Student("Andrey Tikhonov", "MFPU", 19, 20));
-        studentsRecords.add(stud);
-        // извлекаем записи сотрудников с помощью улучшенного цикла forEach
-        for(Student student : studentsRecords) {
-            System.out.println(student);
-        }
-        //
-        // Вызываем конструктор с параметрами для класса University
-        System.out.println("конструктор с параметрами для University");
-        University univer = new University("1", "MGU", "MGU", 1380, StudyProfile.valueOf("PSYCHOLOGIE"));
-        StudyProfile studyProfile = StudyProfile.MEDICINE;
-        // создаем объект ArrayList для хранения записей сотрудников
-        ArrayList<University> univerRecords = new ArrayList<University>();
-        // добавляем записи сотрудников в объект AL
-        univerRecords.add(new University("1", "MGU", "MGU", 1380, studyProfile));
-        // извлекаем записи сотрудников с помощью улучшенного цикла forEach
-        for(University university : univerRecords) {
-            System.out.println(university);
-        }
-        ReadXLSXFile.readXLSFFile("Студенты");
-        ReadXLSXFile.readXLSFFile("Университеты");
+        //ReadXLSXFile.readXLSFFile("Студенты");
+        //ReadXLSXFile.readXLSFFile("Университеты");
     }
 }

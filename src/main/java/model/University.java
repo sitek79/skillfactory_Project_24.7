@@ -1,3 +1,7 @@
+package model;
+
+import enums.StudyProfile;
+
 public class University {
     // внутренние переменные
     String id;

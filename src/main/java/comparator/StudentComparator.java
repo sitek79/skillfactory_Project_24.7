@@ -1,3 +1,5 @@
+package comparator;
+
 import model.Student;
 
 import java.util.Comparator;

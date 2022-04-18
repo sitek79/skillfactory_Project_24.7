@@ -1,3 +1,5 @@
+package model;
+
 public class Student {
     // внутренние переменные
     String fullName;
