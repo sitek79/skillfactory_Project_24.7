@@ -1,77 +1,75 @@
 package model;
 
+import com.google.gson.annotations.SerializedName;
 import enums.StudyProfile;
 
 public class University {
-    // внутренние переменные
-    String id;
-    String fullName;
-    String shortName;
-    int yearOfFoundation;
-    StudyProfile mainProfile;
+    @SerializedName("universityId")
+    private String id;
+    @SerializedName("universityName")
+    private String fullName;
+    @SerializedName("universityShortName")
+    private String shortName;
+    @SerializedName("foundation")
+    private int yearOfFoundation;
+    @SerializedName("profile")
+    private StudyProfile mainProfile;
 
     public University() {
-        super();
-        System.out.println("University. Конструктор по умолчанию");
-        toString();
-    }
-
-    // Конструктор с пятью аргументами
-    public University(String id, String fullName, String shortName, int yearOfFoundation, StudyProfile mainProfile) {
-        this.id = id;
-        this.fullName = fullName;
-        this.shortName = shortName;
-        this.yearOfFoundation = yearOfFoundation;
-        this.mainProfile = mainProfile;
     }
 
     public String getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public University setId(String id) {
         this.id = id;
+        return this;
     }
 
     public String getFullName() {
         return fullName;
     }
 
-    public void setFullName(String fullName) {
+    public University setFullName(String fullName) {
         this.fullName = fullName;
+        return this;
     }
 
     public String getShortName() {
         return shortName;
     }
 
-    public void setShortName(String shortName) {
+    public University setShortName(String shortName) {
         this.shortName = shortName;
+        return this;
     }
 
     public int getYearOfFoundation() {
         return yearOfFoundation;
     }
 
-    public void setYearOfFoundation(int yearOfFoundation) {
+    public University setYearOfFoundation(int yearOfFoundation) {
         this.yearOfFoundation = yearOfFoundation;
+        return this;
     }
 
     public StudyProfile getMainProfile() {
         return mainProfile;
     }
 
-    public void setMainProfile(StudyProfile mainProfile) {
+    public University setMainProfile(StudyProfile mainProfile) {
         this.mainProfile = mainProfile;
+        return this;
     }
 
-    // переопределение метода toString()
     @Override
     public String toString() {
-        return "University {id=" + id +
-                ", fullName=" + fullName +
-                ", shortName=" + shortName +
-                ", yearOfFoundation=" + yearOfFoundation +
-                ", mainProfile=" + mainProfile + "}";
+        return String.format("id = %s, fullName = %s, shortName = %s, yearOfFoundation = %s, mainProfile = %s",
+                this.id,
+                this.fullName,
+                this.shortName,
+                this.yearOfFoundation,
+                this.mainProfile.getProfileName());
     }
 }

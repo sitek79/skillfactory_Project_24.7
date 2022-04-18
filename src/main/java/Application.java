@@ -6,6 +6,7 @@ import io.ReadXLSXFile;
 import model.Student;
 import model.University;
 import util.ComparatorUtil;
+import util.JsonUtil;
 
 import java.io.IOException;
 import java.util.List;
@@ -17,19 +18,40 @@ public class Application {
                 ReadXLSXFile.readXlsUniversities("src/main/resources/universityInfo.xlsx");
         UniversityComparator universityComparator =
                 ComparatorUtil.getUniversityComparator(UniversityComparatorType.YEAR);
-        universities.stream()
-                .sorted(universityComparator)
-                .forEach(System.out::println);
+        universities.sort(universityComparator);
+        String universitiesJson = JsonUtil.universityListToJson(universities);
+        // проверяем, что json создан успешно
+        System.out.println(universitiesJson);
+        List<University> universitiesFromJson = JsonUtil.jsonToUniversityList(universitiesJson);
+        // проверяем, что обратно коллекция воссоздаётся в таком же количестве элементов
+        System.out.println(universities.size() == universitiesFromJson.size());
+        universities.forEach(university -> {
+            String universityJson = JsonUtil.universityToJson(university);
+            // проверяем, что json из отдельного элемента создан успешно
+            System.out.println(universityJson);
+            University universityFromJson = JsonUtil.jsonToUniversity(universityJson);
+            // проверяем, что обратно элемент воссоздаётся
+            System.out.println(universityFromJson);
+        });
 
         List<Student> students =
                 ReadXLSXFile.readXlsStudents("src/main/resources/universityInfo.xlsx");
         StudentComparator studentComparator =
                 ComparatorUtil.getStudentComparator(StudentComparatorType.AVG_EXAM_SCORE);
-        students.stream()
-                .sorted(studentComparator)
-                .forEach(System.out::println);
-        //
-        //ReadXLSXFile.readXLSFFile("Студенты");
-        //ReadXLSXFile.readXLSFFile("Университеты");
+        students.sort(studentComparator);
+        String studentsJson = JsonUtil.studentListToJson(students);
+        // проверяем, что json создан успешно
+        System.out.println(studentsJson);
+        List<Student> studentsFromJson = JsonUtil.jsonToStudentList(studentsJson);
+        // проверяем, что обратно коллекция воссоздаётся в таком же количестве элементов
+        System.out.println(students.size() == studentsFromJson.size());
+        students.forEach(student -> {
+            String studentJson = JsonUtil.studentToJson(student);
+            // проверяем, что json из отдельного элемента создан успешно
+            System.out.println(studentJson);
+            Student studentFromJson = JsonUtil.jsonToStudent(studentJson);
+            // проверяем, что обратно элемент воссоздаётся
+            System.out.println(studentFromJson);
+        });
     }
 }
