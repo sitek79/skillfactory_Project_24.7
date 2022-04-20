@@ -54,6 +54,7 @@ cmake-build-*/
 *.iws
 
 # IntelliJ
+.idea
 out/
 
 # mpeltonen/sbt-idea plugin
@@ -156,3 +157,6 @@ buildNumber.properties
 .classpath
 
 # End of https://www.toptal.com/developers/gitignore/api/java,maven,intellij
+
+#
+statistics.xlsx
