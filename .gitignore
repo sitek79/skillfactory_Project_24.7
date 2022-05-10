@@ -160,3 +160,7 @@ buildNumber.properties
 
 #
 statistics.xlsx
+#
+logfile.txt.0
+#
+jsonReqs
